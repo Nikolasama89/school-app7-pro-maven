@@ -225,7 +225,7 @@ public class Dashboard extends JFrame {
 		contentPane_1.add(btnInsertTeacher);
 	}
 	
-	public static Connection getConnection() {
-		return connection;
-	}
+//	public static Connection getConnection() {
+//		return connection;
+//	}
 }
