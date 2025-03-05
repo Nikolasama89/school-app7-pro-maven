@@ -107,7 +107,33 @@ public class TeacherDAOImpl implements ITeacherDAO {
 
     @Override
     public Teacher getById(Integer id) throws TeacherDAOException {
-        return null;
+        String sql = "SELECT * FROM teachers WHERE id = ?";
+        Teacher teacher = null;
+        ResultSet rs;
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                teacher = new Teacher(rs.getInt("id"), rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getString("vat"), rs.getString("fathername"),
+                        rs.getString("phone_num"),
+                        rs.getString("email"), rs.getString("street"),
+                        rs.getString("street_num"),
+                        rs.getString("zipcode"), rs.getInt("city_id"),
+                        rs.getString("uuid"),
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime());
+            }
+            return teacher;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new TeacherDAOException("SQL Error. Teacher with id: " + id + " error in finding.");
+        }
     }
 
     @Override
