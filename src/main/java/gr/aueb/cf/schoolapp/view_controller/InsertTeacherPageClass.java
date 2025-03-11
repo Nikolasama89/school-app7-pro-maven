@@ -284,7 +284,6 @@ public class InsertTeacherPageClass extends JFrame {
 		insertBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Data Binding
-
 				TeacherInsertDTO insertDTO = doDataBinding();
 				TeacherReadOnlyDTO teacherReadOnlyDTO;
 				// Validation
