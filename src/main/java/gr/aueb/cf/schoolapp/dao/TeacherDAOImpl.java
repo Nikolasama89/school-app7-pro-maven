@@ -15,7 +15,7 @@ public class TeacherDAOImpl implements ITeacherDAO {
     @Override
     public Teacher insert(Teacher teacher) throws TeacherDAOException {
         String sql = "INSERT INTO teachers( firstname, lastname, vat, fathername, phone_num, email, " +
-                "street, street_num, zipcode, city_id, uuid, created_at, updated_at" +
+                "street, street_num, zipcode, city_id, uuid, created_at, updated_at)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Teacher insertedTeacher = null;
